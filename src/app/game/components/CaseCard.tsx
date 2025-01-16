@@ -13,13 +13,13 @@ const CaseCard: React.FC<CaseCardProps> = ({
   onAnswer,
 }) => {
   const [dragging, setDragging] = useState(false);
-  const [draggedItem, setDraggedItem] = useState<string | null>(null);
+  //   const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
   const dropRef = useRef<HTMLDivElement | null>(null);
 
   const handleDragStart = (e: React.DragEvent) => {
     setDragging(true);
-    setDraggedItem(correctAnswer);
+    // setDraggedItem(correctAnswer);
     e.dataTransfer.setData("text/plain", correctAnswer);
   };
 
