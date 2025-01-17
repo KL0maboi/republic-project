@@ -35,7 +35,6 @@ export default function Game() {
         "The right to personal privacy and protection of personal data.",
       icon: "🔒",
     },
-    // Add more fundamental rights here as needed
   ];
 
   const handleDrop = (droppedCard: string) => {

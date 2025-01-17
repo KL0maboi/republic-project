@@ -1,5 +1,3 @@
-// src/app/game/components/RightsDeck.tsx
-
 import React from "react";
 
 type RightsDeckProps = {
