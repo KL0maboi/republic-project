@@ -38,7 +38,6 @@ export default function Game() {
   ];
 
   const handleDrop = (droppedCard: string) => {
-    console.log(droppedCard);
     if (droppedCard === cases[currentCaseIndex].correctAnswer) {
       setFeedback("Correct!");
       setTimeout(() => {

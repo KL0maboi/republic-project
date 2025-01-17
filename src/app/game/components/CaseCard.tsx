@@ -22,7 +22,6 @@ const CaseCard: React.FC<CaseCardProps> = ({ caseText, onDrop }) => {
       style={{ minHeight: "150px", width: "300px" }}
     >
       <h2 className="text-xl font-semibold">{caseText}</h2>
-      <p className="mt-4 text-gray-500"></p>
     </div>
   );
 };
