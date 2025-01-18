@@ -42,9 +42,9 @@ export default function Home() {
       correctAnswer: "Right to Equality",
     },
     {
-      name: "Maneka Gandhi v. Union of India (1978)",
-      text: "Maneka Gandhi, a prominent journalist, was suddenly denied the right to travel abroad when the government seized her passport without providing any valid reasons. This action was taken under a broad discretionary power of the state, and Maneka challenged the decision, arguing that her ability to travel freely was unjustly curtailed. The case centered on whether the government’s actions violated her basic freedoms and personal liberty.",
-      correctAnswer: "Right to Freedom",
+      name: "Unni Krishnan, J.P. v. State of Andhra Pradesh (1993)",
+      text: "Several private educational institutions were found to be charging exorbitant fees, making education inaccessible to a large segment of the population. A petition was filed arguing that such practices were detrimental to the public good and violated the rights of children. The case dealt with whether education should be treated as a privilege or a fundamental necessity, and whether the state had a role in ensuring access to education for all children.",
+      correctAnswer: "Cultural and Educational Rights",
     },
     {
       name: "K.S. Puttaswamy v. Union of India (2017)",
@@ -52,19 +52,19 @@ export default function Home() {
       correctAnswer: "Right to Constitutional Remedies",
     },
     {
-      name: "Indian Young Lawyers Association v. State of Kerala (2018)",
-      text: "A group of women petitioned the Supreme Court to challenge a religious practice that restricted women of a certain age from entering a temple. The practice had been long-standing, rooted in tradition, but the petitioners argued that it was discriminatory and violated their fundamental freedoms. The case prompted a debate over the intersection of religious customs and modern constitutional values, questioning how far religious practices could be maintained when they clash with individual rights.",
-      correctAnswer: "Right to Freedom of Religion",
-    },
-    {
-      name: "Unni Krishnan, J.P. v. State of Andhra Pradesh (1993)",
-      text: "Several private educational institutions were found to be charging exorbitant fees, making education inaccessible to a large segment of the population. A petition was filed arguing that such practices were detrimental to the public good and violated the rights of children. The case dealt with whether education should be treated as a privilege or a fundamental necessity, and whether the state had a role in ensuring access to education for all children.",
-      correctAnswer: "Cultural and Educational Rights",
-    },
-    {
       name: "Bandhua Mukti Morcha v. Union of India (1984)",
       text: "Workers employed in brick kilns and quarries were subjected to conditions that forced them into bonded labor. These workers were often unable to escape due to overwhelming debt and lack of agency. An organization fighting for the rights of these workers filed a petition, asking the court to intervene and stop the practice of bonded labor. The case highlighted the severe exploitation of vulnerable populations and the need for stronger enforcement of labor laws.",
       correctAnswer: "Right against Exploitation",
+    },
+    {
+      name: "Maneka Gandhi v. Union of India (1978)",
+      text: "Maneka Gandhi, a prominent journalist, was suddenly denied the right to travel abroad when the government seized her passport without providing any valid reasons. This action was taken under a broad discretionary power of the state, and Maneka challenged the decision, arguing that her ability to travel freely was unjustly curtailed. The case centered on whether the government’s actions violated her basic freedoms and personal liberty.",
+      correctAnswer: "Right to Freedom",
+    },
+    {
+      name: "Indian Young Lawyers Association v. State of Kerala (2018)",
+      text: "A group of women petitioned the Supreme Court to challenge a religious practice that restricted women of a certain age from entering a temple. The practice had been long-standing, rooted in tradition, but the petitioners argued that it was discriminatory and violated their fundamental freedoms. The case prompted a debate over the intersection of religious customs and modern constitutional values, questioning how far religious practices could be maintained when they clash with individual rights.",
+      correctAnswer: "Right to Freedom of Religion",
     },
   ];
 
