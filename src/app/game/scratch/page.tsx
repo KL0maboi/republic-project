@@ -26,16 +26,22 @@ export default function Home() {
   };
 
   const handleAddToDeck = () => {
+    const noccurences = originalWord
+      .split("")
+      .filter((e) => e === input).length;
+
+    const n =
+      deck.filter((e) => e === input).length +
+      arranged.filter((e) => e === input).length;
     if (
       scrambledWord.includes(input) &&
-      !deck.includes(input) &&
+      noccurences > n &&
       !arranged.includes(input)
     ) {
-      const occurrences = originalWord
-        .split("")
-        .filter((char) => char === input);
-      setDeck([...deck, ...occurrences]);
-      setMessage(null);
+      if (originalWord.includes(input)) {
+        setDeck([...deck, input]);
+        setMessage(null);
+      }
     } else {
       setMessage("Wrong letter");
     }
@@ -84,7 +90,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen w-screen flex-col items-center justify-center bg-white p-4">
-      <h1 className="mb-6 text-3xl font-bold">Scrambled Word Game</h1>
+      <h1 className="mb-6 text-3xl font-bold">Find Me!</h1>
       <div className="mb-4 flex items-center justify-center gap-2">
         {arranged.map((letter, index) => (
           <div
