@@ -37,11 +37,6 @@ export default function Home() {
 
   const cases = [
     {
-      name: "State of West Bengal v. Anwar Ali Sarkar (1952)",
-      text: "A group of individuals were detained under a special law aimed at controlling unlawful activities in a particular region. The detention was carried out without trial or the usual legal procedures, and the accused challenged the process, arguing that it violated basic principles of justice. The law permitted detention based on suspicion, but the lack of transparency in the process raised concerns about fairness and arbitrary actions by the state.",
-      correctAnswer: "Right to Equality",
-    },
-    {
       name: "Unni Krishnan, J.P. v. State of Andhra Pradesh (1993)",
       text: "Several private educational institutions were found to be charging exorbitant fees, making education inaccessible to a large segment of the population. A petition was filed arguing that such practices were detrimental to the public good and violated the rights of children. The case dealt with whether education should be treated as a privilege or a fundamental necessity, and whether the state had a role in ensuring access to education for all children.",
       correctAnswer: "Cultural and Educational Rights",
@@ -50,6 +45,11 @@ export default function Home() {
       name: "K.S. Puttaswamy v. Union of India (2017)",
       text: "In a case involving the government's decision to make biometric data collection mandatory for citizens, petitioners argued that the move infringed on privacy. The petitioners claimed that the program lacked sufficient safeguards to prevent misuse, and that it exposed individuals to unnecessary risks. The case raised complex questions about the boundaries of personal space and how far the state could go in collecting sensitive data from its citizens.",
       correctAnswer: "Right to Constitutional Remedies",
+    },
+    {
+      name: "State of West Bengal v. Anwar Ali Sarkar (1952)",
+      text: "A group of individuals were detained under a special law aimed at controlling unlawful activities in a particular region. The detention was carried out without trial or the usual legal procedures, and the accused challenged the process, arguing that it violated basic principles of justice. The law permitted detention based on suspicion, but the lack of transparency in the process raised concerns about fairness and arbitrary actions by the state.",
+      correctAnswer: "Right to Equality",
     },
     {
       name: "Bandhua Mukti Morcha v. Union of India (1984)",
