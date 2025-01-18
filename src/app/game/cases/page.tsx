@@ -1,80 +1,76 @@
-"use client";
-
-import { useState } from "react";
-import { redirect } from "next/navigation";
-import CaseCard from "./components/CaseCard";
-import RightsDeck from "./components/RightsDeck";
-
-export default function Cases() {
-  const [currentCaseIndex, setCurrentCaseIndex] = useState(0);
-  const [feedback, setFeedback] = useState<string | null>(null);
-  const [answered, setAnswered] = useState<boolean>(false);
-
-  const cases = [
-    {
-      text: "Case 1: Right to Free Speech",
-      correctAnswer: "Freedom of Speech",
-    },
-    { text: "Case 2: Right to Equality", correctAnswer: "Right to Equality" },
-    { text: "Case 3: Right to Privacy", correctAnswer: "Right to Privacy" },
-  ];
-
+export default function Home() {
   const rights = [
     {
-      name: "Freedom of Speech",
-      description:
-        "The right to express opinions without censorship or restraint.",
-      icon: "🗣️",
-    },
-    {
       name: "Right to Equality",
-      description: "The right to be treated equally before the law.",
+      description:
+        "Article 14: Ensures equality before the law and prohibits discrimination based on religion, race, caste, sex, or place of birth.",
       icon: "⚖️",
     },
     {
-      name: "Right to Privacy",
+      name: "Right to Freedom",
       description:
-        "The right to personal privacy and protection of personal data.",
-      icon: "🔒",
+        "Article 19: Guarantees freedoms of speech, expression, assembly, movement, and profession.",
+      icon: "🕊️",
+    },
+    {
+      name: "Right against Exploitation",
+      description:
+        "Article 23 & 24: Prohibits human trafficking, forced labor, and child labor.",
+      icon: "🛑",
+    },
+    {
+      name: "Cultural and educational rights",
+      description:
+        "Article 29 & 30: Protects cultural rights and the right to establish educational institutions for minorities.",
+      icon: "🎓",
+    },
+    {
+      name: "Right to Freedom of Religion",
+      description:
+        "Article 25-28: Protects the freedom to practice, profess, and propagate religion.",
+      icon: "🛐",
+    },
+    {
+      name: "Right to constitutional remedies",
+      description:
+        "Article 32: Provides the right to approach the Supreme Court for enforcement of rights.",
+      icon: "📜",
     },
   ];
 
-  const handleDrop = (droppedCard: string) => {
-    setAnswered(true);
-    if (droppedCard === cases[currentCaseIndex].correctAnswer) {
-      setFeedback("Correct!");
-
-      setTimeout(() => {
-        setAnswered(false);
-
-        setFeedback(null);
-        if (currentCaseIndex === cases.length - 1) {
-          redirect("/game/final");
-        } else {
-          setCurrentCaseIndex((prev) => (prev + 1) % cases.length);
-        }
-      }, 2000);
-    } else {
-      setFeedback("Wrong Answer. Try Again!");
-      setTimeout(() => {
-        setFeedback(null);
-        setAnswered(false);
-      }, 2000);
-    }
-  };
+  const cases = [
+    {
+      text: "Imagine two individuals, Ravi and Priya, both applying for the same job at a company. Ravi is a man, and Priya is a woman. Both have similar qualifications, experience, and skills. However, in some companies, gender biases may exist, and women might not be considered equally for certain roles, especially in traditionally male-dominated industries",
+    },
+  ];
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="mb-6 text-3xl font-bold">Fundamental Rights Game</h1>
-      <CaseCard caseText={cases[currentCaseIndex].text} onDrop={handleDrop} />
-      {feedback && (
-        <div
-          className={`mt-4 text-lg font-semibold ${feedback === "Correct!" ? "text-green-500" : "text-red-500"}`}
-        >
-          {feedback}
-        </div>
-      )}
-      <RightsDeck rights={rights} answered={answered} />
-    </div>
+    <main className="flex h-screen w-screen flex-col items-center bg-gray-100 p-8">
+      <h1 className="mb-6 flex-[1] text-center text-3xl font-bold">
+        This Situation involves which right?
+      </h1>
+
+      <div className="mb-12 grid w-[80%] flex-[3] grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {rights.map((right) => (
+          <div
+            key={right.name}
+            className="rounded-lg border bg-white p-4 shadow-md transition hover:shadow-lg"
+          >
+            <div className="mb-2 flex items-center justify-center text-2xl">
+              {right.icon}
+            </div>
+            <h2 className="text-center text-lg font-semibold">{right.name}</h2>
+            <p className="text-center text-sm text-gray-600">
+              {right.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="h-full w-full rounded-lg border bg-white p-6 text-center shadow-md">
+        <h2 className="mb-4 text-xl font-semibold">Situation</h2>
+        <p className="text-gray-700">{cases[0].text}</p>
+      </div>
+    </main>
   );
 }
