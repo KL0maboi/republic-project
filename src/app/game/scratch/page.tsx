@@ -33,11 +33,9 @@ export default function Home() {
     const n =
       deck.filter((e) => e === input).length +
       arranged.filter((e) => e === input).length;
-    if (
-      scrambledWord.includes(input) &&
-      noccurences > n &&
-      !arranged.includes(input)
-    ) {
+    console.log(n);
+    console.log(noccurences);
+    if (scrambledWord.includes(input) && noccurences > n) {
       if (originalWord.includes(input)) {
         setDeck([...deck, input]);
         setMessage(null);
