@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { redirect } from "next/navigation";
 import CaseCard from "./components/CaseCard";
 import RightsDeck from "./components/RightsDeck";
 
-export default function Game() {
+export default function Cases() {
   const [currentCaseIndex, setCurrentCaseIndex] = useState(0);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [answered, setAnswered] = useState<boolean>(false);
 
   const cases = [
     {
@@ -38,15 +40,26 @@ export default function Game() {
   ];
 
   const handleDrop = (droppedCard: string) => {
+    setAnswered(true);
     if (droppedCard === cases[currentCaseIndex].correctAnswer) {
       setFeedback("Correct!");
+
       setTimeout(() => {
+        setAnswered(false);
+
         setFeedback(null);
-        setCurrentCaseIndex((prev) => (prev + 1) % cases.length);
-      }, 1000);
+        if (currentCaseIndex === cases.length - 1) {
+          redirect("/game/final");
+        } else {
+          setCurrentCaseIndex((prev) => (prev + 1) % cases.length);
+        }
+      }, 2000);
     } else {
       setFeedback("Wrong Answer. Try Again!");
-      setTimeout(() => setFeedback(null), 2000);
+      setTimeout(() => {
+        setFeedback(null);
+        setAnswered(false);
+      }, 2000);
     }
   };
 
@@ -61,7 +74,7 @@ export default function Game() {
           {feedback}
         </div>
       )}
-      <RightsDeck rights={rights} />
+      <RightsDeck rights={rights} answered={answered} />
     </div>
   );
 }

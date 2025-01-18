@@ -5,12 +5,12 @@ type CaseCardProps = {
   onDrop: (droppedCard: string) => void;
 };
 
-const CaseCard: React.FC<CaseCardProps> = ({ caseText, onDrop }) => {
-  const handleDragOver = (e: React.DragEvent) => e.preventDefault();
+export default function CaseCard({ caseText, onDrop }: CaseCardProps) {
+  const handleDragOver = (event: React.MouseEvent) => event.preventDefault();
 
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    const droppedCard = e.dataTransfer.getData("text/plain");
+  const handleDrop = (event: React.DragEvent) => {
+    event.preventDefault();
+    const droppedCard = event.dataTransfer.getData("text/plain");
     onDrop(droppedCard);
   };
 
@@ -24,6 +24,4 @@ const CaseCard: React.FC<CaseCardProps> = ({ caseText, onDrop }) => {
       <h2 className="text-xl font-semibold">{caseText}</h2>
     </div>
   );
-};
-
-export default CaseCard;
+}

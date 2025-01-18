@@ -6,9 +6,10 @@ type RightsDeckProps = {
     description: string;
     icon: string;
   }[];
+  answered: boolean;
 };
 
-export default function RightsDeck({ rights }: RightsDeckProps) {
+export default function RightsDeck({ rights, answered }: RightsDeckProps) {
   const handleDragStart = (e: React.DragEvent, name: string) => {
     e.dataTransfer.setData("text/plain", name);
   };
@@ -18,7 +19,7 @@ export default function RightsDeck({ rights }: RightsDeckProps) {
       {rights.map((right) => (
         <div
           key={right.name}
-          draggable
+          draggable={!answered}
           onDragStart={(e) => handleDragStart(e, right.name)}
           className="w-48 transform cursor-pointer rounded-lg border bg-blue-50 p-4 shadow-md transition-transform hover:scale-105 hover:shadow-lg"
         >
