@@ -3,14 +3,13 @@
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const originalWord = "FUNDAMENTALRIGHTS";
+  const originalWord = "FUNDAMENTAL RIGHTS";
   const scrambledWord = "NDUHTMSLRTFAANGEI";
-
   const [input, setInput] = useState("");
-  const [revealed, setRevealed] = useState<boolean[]>(
-    Array(scrambledWord.length).fill(false),
+  const [deck, setDeck] = useState<string[]>([]);
+  const [arranged, setArranged] = useState<(string | null)[]>(
+    originalWord.split("").map((char) => (char === " " ? " " : null)),
   );
-  const [arranged, setArranged] = useState<string[]>(scrambledWord.split(""));
   const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -20,48 +19,63 @@ export default function Home() {
     }
   }, [message]);
 
-  const handleReveal = () => {
-    const newRevealed = [...revealed];
-    let found = false;
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && input) {
+      handleAddToDeck();
+    }
+  };
 
-    scrambledWord.split("").forEach((letter, index) => {
-      if (letter === input) {
-        newRevealed[index] = true;
-        found = true;
-      }
-    });
-
-    if (found) {
+  const handleAddToDeck = () => {
+    if (
+      scrambledWord.includes(input) &&
+      !deck.includes(input) &&
+      !arranged.includes(input)
+    ) {
+      const occurrences = originalWord
+        .split("")
+        .filter((char) => char === input);
+      setDeck([...deck, ...occurrences]);
       setMessage(null);
     } else {
       setMessage("Wrong letter");
     }
-
-    setRevealed(newRevealed);
     setInput("");
   };
 
-  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && input) {
-      handleReveal();
-    }
-  };
-
-  const handleDragStart = (index: number) => (e: React.DragEvent) => {
-    e.dataTransfer.setData("text/plain", index.toString());
-  };
+  const handleDragStart =
+    (letter: string, fromDeck: boolean, index: number) =>
+    (e: React.DragEvent) => {
+      e.dataTransfer.setData(
+        "text/plain",
+        JSON.stringify({ letter, fromDeck, index }),
+      );
+    };
 
   const handleDrop = (index: number) => (e: React.DragEvent) => {
     e.preventDefault();
-    const draggedIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
+    const {
+      letter,
+      fromDeck,
+      index: fromIndex,
+    } = JSON.parse(e.dataTransfer.getData("text/plain"));
+
     const newArranged = [...arranged];
-    [newArranged[index], newArranged[draggedIndex]] = [
-      newArranged[draggedIndex],
-      newArranged[index],
-    ];
+
+    if (fromDeck) {
+      if (!newArranged[index]) {
+        const newDeck = deck.filter((_, i) => i !== fromIndex);
+        newArranged[index] = letter;
+        setDeck(newDeck);
+      }
+    } else {
+      const temp = newArranged[index];
+      newArranged[index] = letter;
+      newArranged[fromIndex] = temp;
+    }
+
     setArranged(newArranged);
-    console.log(newArranged.join(""), originalWord);
-    if (newArranged.join("") === originalWord) {
+
+    if (newArranged.join("") === originalWord.split("").join("")) {
       setMessage("You Won!");
     }
   };
@@ -69,29 +83,27 @@ export default function Home() {
   const handleDragOver = (e: React.DragEvent) => e.preventDefault();
 
   return (
-    <div className="flex min-h-screen w-screen flex-col items-center justify-center bg-gray-100 p-4">
+    <div className="flex min-h-screen w-screen flex-col items-center justify-center bg-white p-4">
       <h1 className="mb-6 text-3xl font-bold">Scrambled Word Game</h1>
-      <div className="mb-4 flex flex-wrap justify-center gap-4">
+      <div className="mb-4 flex items-center justify-center gap-2">
         {arranged.map((letter, index) => (
           <div
             key={index}
-            draggable
-            onDragStart={handleDragStart(index)}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop(index)}
-            className={`relative flex h-16 w-12 items-center justify-center rounded-lg border bg-gray-200 shadow ${
-              revealed[index]
-                ? "bg-blue-500 text-black"
-                : "bg-white text-gray-400"
+            onDragOver={letter === " " ? undefined : handleDragOver}
+            onDrop={letter === " " ? undefined : handleDrop(index)}
+            className={`relative flex h-16 w-12 items-center justify-center rounded-lg border shadow ${
+              letter === " " ? "invisible bg-gray-400" : "bg-gray-300"
             }`}
           >
-            <div
-              className={`absolute inset-0 flex items-center justify-center text-xl font-bold transition-transform duration-500 ${
-                revealed[index] ? "rotate-y-0" : "rotate-y-180"
-              }`}
-            >
-              {revealed[index] ? letter : "?"}
-            </div>
+            {letter && letter !== " " && (
+              <div
+                draggable
+                onDragStart={handleDragStart(letter, false, index)}
+                className="absolute inset-0 flex items-center justify-center rounded-lg bg-blue-500 text-xl font-bold text-white"
+              >
+                {letter}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -104,6 +116,18 @@ export default function Home() {
         placeholder="Enter a letter"
         className="mb-4 w-64 rounded-lg border border-gray-300 p-2 text-center text-lg"
       />
+      <div className="mb-4 flex flex-wrap gap-4">
+        {deck.map((letter, index) => (
+          <div
+            key={index}
+            draggable
+            onDragStart={handleDragStart(letter, true, index)}
+            className="flex h-16 w-12 cursor-move items-center justify-center rounded-lg bg-blue-500 text-xl font-bold text-white shadow"
+          >
+            {letter}
+          </div>
+        ))}
+      </div>
       {message && (
         <p
           className={`mt-4 text-lg font-semibold ${
