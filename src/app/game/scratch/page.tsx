@@ -69,7 +69,7 @@ export default function Home() {
   const handleDragOver = (e: React.DragEvent) => e.preventDefault();
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
+    <div className="flex min-h-screen w-screen flex-col items-center justify-center bg-gray-100 p-4">
       <h1 className="mb-6 text-3xl font-bold">Scrambled Word Game</h1>
       <div className="mb-4 flex flex-wrap justify-center gap-4">
         {arranged.map((letter, index) => (
@@ -82,7 +82,7 @@ export default function Home() {
             className={`relative flex h-16 w-12 items-center justify-center rounded-lg border bg-gray-200 shadow ${
               revealed[index]
                 ? "bg-blue-500 text-black"
-                : "bg-gray-100 text-gray-400"
+                : "bg-white text-gray-400"
             }`}
           >
             <div
