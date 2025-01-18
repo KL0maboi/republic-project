@@ -6,13 +6,13 @@ export default function Home() {
       <h1 className="mb-8 text-4xl font-bold">Republic Day Event</h1>
 
       <div className="flex gap-8">
-        <Link href="/game">
+        <Link href="/game/cases">
           <button className="transform rounded-lg bg-blue-500 px-6 py-3 text-lg text-white transition-all duration-200 hover:scale-105 active:scale-95">
             Event 1
           </button>
         </Link>
 
-        <Link href="/about">
+        <Link href="/game/scratch">
           <button className="transform rounded-lg bg-green-500 px-6 py-3 text-lg text-white transition-all duration-200 hover:scale-105 active:scale-95">
             Event 2
           </button>
