@@ -86,7 +86,7 @@ export default function Home() {
   };
 
   const handleNextCase = () => {
-    if (currentCaseIndex === 5) return redirect("/game/cases/rights");
+    if (currentCaseIndex === 6) return redirect("/game/cases/rights");
     setIsCorrect(null);
     setSelectedRight(null);
     setWrongAnswers([]);
