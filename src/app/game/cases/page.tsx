@@ -37,14 +37,19 @@ export default function Home() {
 
   const cases = [
     {
+      name: "K.S. Puttaswamy v. Union of India (2017)",
+      text: "In a case involving the government's decision to make biometric data collection mandatory for citizens, petitioners argued that the move infringed on privacy. The petitioners claimed that the program lacked sufficient safeguards to prevent misuse, and that it exposed individuals to unnecessary risks. The case raised complex questions about the boundaries of personal space and how far the state could go in collecting sensitive data from its citizens.",
+      correctAnswer: "Right to Constitutional Remedies",
+    },
+    {
       name: "Unni Krishnan, J.P. v. State of Andhra Pradesh (1993)",
       text: "Several private educational institutions were found to be charging exorbitant fees, making education inaccessible to a large segment of the population. A petition was filed arguing that such practices were detrimental to the public good and violated the rights of children. The case dealt with whether education should be treated as a privilege or a fundamental necessity, and whether the state had a role in ensuring access to education for all children.",
       correctAnswer: "Cultural and Educational Rights",
     },
     {
-      name: "K.S. Puttaswamy v. Union of India (2017)",
-      text: "In a case involving the government's decision to make biometric data collection mandatory for citizens, petitioners argued that the move infringed on privacy. The petitioners claimed that the program lacked sufficient safeguards to prevent misuse, and that it exposed individuals to unnecessary risks. The case raised complex questions about the boundaries of personal space and how far the state could go in collecting sensitive data from its citizens.",
-      correctAnswer: "Right to Constitutional Remedies",
+      name: "Bandhua Mukti Morcha v. Union of India (1984)",
+      text: "Workers employed in brick kilns and quarries were subjected to conditions that forced them into bonded labor. These workers were often unable to escape due to overwhelming debt and lack of agency. An organization fighting for the rights of these workers filed a petition, asking the court to intervene and stop the practice of bonded labor. The case highlighted the severe exploitation of vulnerable populations and the need for stronger enforcement of labor laws.",
+      correctAnswer: "Right against Exploitation",
     },
     {
       name: "State of West Bengal v. Anwar Ali Sarkar (1952)",
@@ -52,9 +57,9 @@ export default function Home() {
       correctAnswer: "Right to Equality",
     },
     {
-      name: "Bandhua Mukti Morcha v. Union of India (1984)",
-      text: "Workers employed in brick kilns and quarries were subjected to conditions that forced them into bonded labor. These workers were often unable to escape due to overwhelming debt and lack of agency. An organization fighting for the rights of these workers filed a petition, asking the court to intervene and stop the practice of bonded labor. The case highlighted the severe exploitation of vulnerable populations and the need for stronger enforcement of labor laws.",
-      correctAnswer: "Right against Exploitation",
+      name: "Minerva Mills Ltd. v. Union of India (1980)",
+      text: "A textile manufacturing company faced government action under a law aimed at nationalizing certain industries deemed to be underperforming. The company challenged the validity of this law, arguing that it granted excessive power to the state, potentially undermining the balance of authority established by the Constitution. The case required the court to examine whether the legislation in question disrupted the equilibrium between different branches of government, and if such concentration of power was permissible under the constitutional framework.",
+      correctAnswer: "Right to Constitutional Remedies",
     },
     {
       name: "Maneka Gandhi v. Union of India (1978)",
